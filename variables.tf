@@ -3,27 +3,32 @@ variable "region" {
   type        = string
 }
 
-variable "project_tag" {
-  description = "Project tag value applied to all resources"
+variable "route_table_name" {
+  description = "Name tag for the route table"
   type        = string
 }
 
-variable "allowed_ip_range" {
-  description = "List of IP ranges allowed to access the infrastructure"
-  type        = list(string)
-}
-
-variable "vpc_id" {
-  description = "ID of the existing VPC"
+variable "internet_gw_name" {
+  description = "Name tag for the internet gateway"
   type        = string
 }
 
-variable "public_instance_id" {
-  description = "ID of the existing public EC2 instance"
+variable "public_c_subnet_name" {
+  description = "Name tag for the public subnet in availability zone C"
   type        = string
 }
 
-variable "private_instance_id" {
-  description = "ID of the existing private EC2 instance"
+variable "public_b_subnet_name" {
+  description = "Name tag for the public subnet in availability zone B"
+  type        = string
+}
+
+variable "public_a_subnet_name" {
+  description = "Name tag for the public subnet in availability zone A"
+  type        = string
+}
+
+variable "vpc_name" {
+  description = "Name tag for the VPC"
   type        = string
 }
