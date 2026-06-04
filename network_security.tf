@@ -30,7 +30,7 @@ resource "aws_security_group" "ssh_sg" {
   }
 }
 
-resource "aws_security_group" "http_sg" {
+resource "aws_security_group" "public_http_sg" {
   name        = "cmtr-3v98t79h-http-sg"
   description = "Allow HTTP access"
   vpc_id      = var.vpc_id
@@ -63,7 +63,7 @@ resource "aws_security_group" "http_sg" {
   }
 }
 
-resource "aws_security_group" "private_http_sg" {
+resource "aws_security_group" "private_public_http_sg" {
   name   = "cmtr-3v98t79h-private-http-sg"
   vpc_id = var.vpc_id
 
@@ -81,20 +81,20 @@ resource "aws_security_group" "private_http_sg" {
 
 resource "aws_security_group_rule" "private_http_ingress_http" {
   type                     = "ingress"
-  security_group_id        = aws_security_group.private_http_sg.id
+  security_group_id        = aws_security_group.private_public_http_sg.id
   from_port                = 8080
   to_port                  = 8080
   protocol                 = "tcp"
-  source_security_group_id = aws_security_group.http_sg.id
+  source_security_group_id = aws_security_group.public_http_sg.id
 }
 
 resource "aws_security_group_rule" "private_http_ingress_icmp" {
   type                     = "ingress"
-  security_group_id        = aws_security_group.private_http_sg.id
+  security_group_id        = aws_security_group.private_public_http_sg.id
   from_port                = -1
   to_port                  = -1
   protocol                 = "icmp"
-  source_security_group_id = aws_security_group.http_sg.id
+  source_security_group_id = aws_security_group.public_http_sg.id
 }
 
 resource "aws_network_interface_sg_attachment" "public_ssh" {
@@ -103,7 +103,7 @@ resource "aws_network_interface_sg_attachment" "public_ssh" {
 }
 
 resource "aws_network_interface_sg_attachment" "public_http" {
-  security_group_id    = aws_security_group.http_sg.id
+  security_group_id    = aws_security_group.public_http_sg.id
   network_interface_id = data.aws_instance.public.network_interface_id
 }
 
@@ -113,6 +113,6 @@ resource "aws_network_interface_sg_attachment" "private_ssh" {
 }
 
 resource "aws_network_interface_sg_attachment" "private_http" {
-  security_group_id    = aws_security_group.private_http_sg.id
+  security_group_id    = aws_security_group.private_public_http_sg.id
   network_interface_id = data.aws_instance.private.network_interface_id
 }
