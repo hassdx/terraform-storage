@@ -31,7 +31,7 @@ resource "aws_security_group" "ssh_sg" {
 }
 
 resource "aws_security_group" "public_http_sg" {
-  name        = "cmtr-3v98t79h-http-sg"
+  name        = "cmtr-3v98t79h-public-http-sg"
   description = "Allow HTTP access"
   vpc_id      = var.vpc_id
 
