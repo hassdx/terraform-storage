@@ -1,3 +1,7 @@
-data "aws_s3_bucket" "bucket" {
-  bucket = "cmtr-3v98t79h-bucket-1780604812"
+data "aws_instance" "public" {
+  instance_id = var.public_instance_id
+}
+
+data "aws_instance" "private" {
+  instance_id = var.private_instance_id
 }
