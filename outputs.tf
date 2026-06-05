@@ -28,7 +28,11 @@ output "public_subnet_cidr_block" {
 }
 
 output "public_subnet_availability_zone" {
-  value       = aws_subnet.public_a.availability_zone
+  value = [
+    aws_subnet.public_a.availability_zone,
+    aws_subnet.public_b.availability_zone,
+    aws_subnet.public_c.availability_zone
+  ]
   description = "The availability zone of the public subnet in availability zone A"
 }
 
