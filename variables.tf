@@ -1,34 +1,28 @@
 variable "region" {
-  description = "AWS region where resources will be created"
+  description = "AWS region for the resources"
   type        = string
 }
 
-variable "route_table_name" {
-  description = "Name tag for the route table"
+variable "project_id" {
+  description = "project identifier used for tagging"
   type        = string
 }
 
-variable "internet_gw_name" {
-  description = "Name tag for the internet gateway"
+variable "state_bucket" {
+  description = "S3 bucket name that stores the remote state"
   type        = string
 }
 
-variable "public_c_subnet_name" {
-  description = "Name tag for the public subnet in availability zone C"
+variable "state_key" {
+  description = "S3 bucket name that stores the remote state"
   type        = string
 }
 
-variable "public_b_subnet_name" {
-  description = "Name tag for the public subnet in availability zone B"
+variable "ami_id" {
+  description = "AMI ID for the EC2 instance"
   type        = string
 }
-
-variable "public_a_subnet_name" {
-  description = "Name tag for the public subnet in availability zone A"
-  type        = string
-}
-
-variable "vpc_name" {
-  description = "Name tag for the VPC"
+variable "instance_type" {
+  description = "EC2 instance type"
   type        = string
 }
