@@ -8,21 +8,54 @@ variable "project_id" {
   type        = string
 }
 
-variable "state_bucket" {
-  description = "S3 bucket name that stores the remote state"
+variable "template_name" {
+  description = "Name of the launch template"
   type        = string
 }
 
-variable "state_key" {
-  description = "S3 bucket name that stores the remote state"
-  type        = string
-}
 
-variable "ami_id" {
-  description = "AMI ID for the EC2 instance"
-  type        = string
-}
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
 }
+
+variable "key_name" {
+  description = "Name of the EC2 key pair"
+  type        = string
+}
+
+variable "instance_profile_name" {
+  description = "Name of the IAM instance profile"
+  type        = string
+}
+
+variable "asg_name" {
+  description = "Name of the Auto Scaling Group"
+  type        = string
+}
+
+variable "asg_min_size" {
+  description = "Minimum size of the Auto Scaling Group"
+  type        = number
+}
+
+variable "asg_max_size" {
+  description = "Maximum size of the Auto Scaling Group"
+  type        = number
+}
+
+variable "asg_desired_capacity" {
+  description = "Desired capacity of the Auto Scaling Group"
+  type        = number
+}
+
+variable "lb_name" {
+  description = "Name of the Load Balancer"
+  type        = string
+}
+
+variable "tg_name" {
+  description = "Name of the Target Group"
+  type        = string
+}
+
