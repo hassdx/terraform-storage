@@ -1,12 +1,9 @@
-region                = "us-east-1"
-project_id            = "cmtr-3v98t79h"
-template_name         = "cmtr-3v98t79h-template"
-instance_type         = "t3.micro"
-key_name              = "cmtr-3v98t79h-keypair"
-instance_profile_name = "cmtr-3v98t79h-instance_profile"
-asg_name              = "cmtr-3v98t79h-asg"
-asg_min_size          = 1
-asg_max_size          = 2
-asg_desired_capacity  = 2
-lb_name               = "cmtr-3v98t79h-loadbalancer"
-tg_name               = "cmtr-3v98t79h-targetgroup"
+region              = "us-east-1"
+project_id          = "cmtr-3v98t79h"
+vpc_name            = "cmtr-3v98t79h-vpc"
+public_subnet_name  = "cmtr-3v98t79h-public-subnet-1"
+security_group_name = "cmtr-3v98t79h-sg"
+instance_name       = "cmtr-3v98t79h-instance"
+instance_type       = "t2.micro"
+
+

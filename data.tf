@@ -1,45 +1,21 @@
 data "aws_vpc" "main" {
   filter {
     name   = "tag:Name"
-    values = ["cmtr-3v98t79h-vpc"]
+    values = [var.vpc_name]
   }
 }
 
-data "aws_subnets" "public_subnet" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.main.id]
-  }
-
-  filter {
-    name   = "cidr-block"
-    values = ["10.0.1.0/24", "10.0.3.0/24"]
-  }
-}
-
-data "aws_security_group" "ec2_sg" {
-  vpc_id = data.aws_vpc.main.id
+data "aws_subnet" "public_subnet" {
   filter {
     name   = "tag:Name"
-    values = ["cmtr-3v98t79h-ec2_sg"]
+    values = [var.public_subnet_name]
   }
 }
 
-data "aws_security_group" "http_sg" {
-  vpc_id = data.aws_vpc.main.id
-
+data "aws_security_group" "sg" {
   filter {
     name   = "tag:Name"
-    values = ["cmtr-3v98t79h-http_sg"]
-  }
-}
-
-data "aws_security_group" "lb_sg" {
-  vpc_id = data.aws_vpc.main.id
-
-  filter {
-    name   = "tag:Name"
-    values = ["cmtr-3v98t79h-sglb"]
+    values = [var.security_group_name]
   }
 }
 

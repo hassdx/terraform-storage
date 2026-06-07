@@ -8,54 +8,27 @@ variable "project_id" {
   type        = string
 }
 
-variable "template_name" {
-  description = "Name of the launch template"
+variable "vpc_name" {
+  description = "Name of the VPC to use"
   type        = string
 }
 
+variable "public_subnet_name" {
+  description = "Name of the public subnets to use"
+  type        = string
+}
+
+variable "security_group_name" {
+  description = "Name of the security group to use for EC2 instances"
+  type        = string
+}
 
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
 }
 
-variable "key_name" {
-  description = "Name of the EC2 key pair"
+variable "instance_name" {
+  description = "Name tag for the EC2 instance"
   type        = string
 }
-
-variable "instance_profile_name" {
-  description = "Name of the IAM instance profile"
-  type        = string
-}
-
-variable "asg_name" {
-  description = "Name of the Auto Scaling Group"
-  type        = string
-}
-
-variable "asg_min_size" {
-  description = "Minimum size of the Auto Scaling Group"
-  type        = number
-}
-
-variable "asg_max_size" {
-  description = "Maximum size of the Auto Scaling Group"
-  type        = number
-}
-
-variable "asg_desired_capacity" {
-  description = "Desired capacity of the Auto Scaling Group"
-  type        = number
-}
-
-variable "lb_name" {
-  description = "Name of the Load Balancer"
-  type        = string
-}
-
-variable "tg_name" {
-  description = "Name of the Target Group"
-  type        = string
-}
-
