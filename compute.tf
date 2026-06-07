@@ -8,6 +8,6 @@ resource "aws_instance" "web" {
 
   tags = {
     Project = var.project_id
-    name    = var.instance_name
+    Name    = var.instance_name
   }
 }
