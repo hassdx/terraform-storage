@@ -44,11 +44,13 @@ variable "instance_type" {
 }
 
 variable "blue_weight" {
-  type = number
+  description = "Traffic weight percentage for the blue target group"
+  type        = number
 }
 
 variable "green_weight" {
-  type = number
+  description = "Traffic weight percentage for the green target group"
+  type        = number
 }
 
 variable "alb_name" {
