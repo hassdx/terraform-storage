@@ -5,17 +5,38 @@ data "aws_vpc" "main" {
   }
 }
 
-data "aws_subnet" "public_subnet" {
+data "aws_subnet" "public_subnet1" {
   filter {
     name   = "tag:Name"
-    values = [var.public_subnet_name]
+    values = [var.public_subnet1_name]
   }
 }
 
-data "aws_security_group" "sg" {
+data "aws_subnet" "public_subnet2" {
   filter {
     name   = "tag:Name"
-    values = [var.security_group_name]
+    values = [var.public_subnet2_name]
+  }
+}
+
+data "aws_security_group" "ssh_sg" {
+  filter {
+    name   = "tag:Name"
+    values = [var.security_group_ssh_name]
+  }
+}
+
+data "aws_security_group" "lb_sg" {
+  filter {
+    name   = "tag:Name"
+    values = [var.security_group_lb_name]
+  }
+}
+
+data "aws_security_group" "http_sg" {
+  filter {
+    name   = "tag:Name"
+    values = [var.security_group_http_name]
   }
 }
 
