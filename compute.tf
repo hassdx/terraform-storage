@@ -1,5 +1,5 @@
 resource "aws_lb" "main" {
-  name               = "cmtr-3v98t79h-lb"
+  name               = var.alb_name
   internal           = false
   load_balancer_type = "application"
   security_groups    = [data.aws_security_group.lb_sg.id]
@@ -9,7 +9,7 @@ resource "aws_lb" "main" {
   ]
 
   tags = {
-    Name = "cmtr-3v98t79h-lb"
+    Name = var.alb_name
   }
 
 }
@@ -42,32 +42,32 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "blue" {
-  name     = "cmtr-3v98t79h-blue-tg"
+  name     = var.blue_tg_name
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.main.id
 
   tags = {
-    Name        = "cmtr-3v98t79h-blue-tg"
+    Name        = var.blue_tg_name
     Environment = "blue"
   }
 }
 
 resource "aws_lb_target_group" "green" {
-  name     = "cmtr-3v98t79h-green-tg"
+  name     = var.green_tg_name
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.main.id
 
   tags = {
-    Name        = "cmtr-3v98t79h-green-tg"
+    Name        = var.green_tg_name
     Environment = "green"
   }
 }
 
 
 resource "aws_launch_template" "blue" {
-  name          = "cmtr-3v98t79h-blue-template"
+  name          = var.blue_template_name
   image_id      = data.aws_ami.amazon_linux_2023.id
   instance_type = var.instance_type
 
@@ -102,7 +102,7 @@ resource "aws_launch_template" "blue" {
 }
 
 resource "aws_launch_template" "green" {
-  name          = "cmtr-3v98t79h-green-template"
+  name          = var.green_template_name
   image_id      = data.aws_ami.amazon_linux_2023.id
   instance_type = var.instance_type
 
@@ -136,7 +136,7 @@ resource "aws_launch_template" "green" {
 }
 
 resource "aws_autoscaling_group" "blue" {
-  name                = "cmtr-3v98t79h-blue-asg"
+  name                = var.blue_asg_name
   min_size            = 1
   max_size            = 2
   desired_capacity    = 2
@@ -151,13 +151,13 @@ resource "aws_autoscaling_group" "blue" {
 
   tag {
     key                 = "Name"
-    value               = "cmtr-3v98t79h-blue-asg"
+    value               = var.blue_asg_name
     propagate_at_launch = true
   }
 }
 
 resource "aws_autoscaling_group" "green" {
-  name                = "cmtr-3v98t79h-green-asg"
+  name                = var.green_asg_name
   min_size            = 1
   max_size            = 2
   desired_capacity    = 2
@@ -172,7 +172,7 @@ resource "aws_autoscaling_group" "green" {
 
   tag {
     key                 = "Name"
-    value               = "cmtr-3v98t79h-green-asg"
+    value               = var.green_asg_name
     propagate_at_launch = true
   }
 

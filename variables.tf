@@ -50,3 +50,38 @@ variable "blue_weight" {
 variable "green_weight" {
   type = number
 }
+
+variable "alb_name" {
+  description = "ALB name"
+  type        = string
+}
+
+variable "blue_tg_name" {
+  description = "Blue target group name"
+  type        = string
+}
+
+variable "green_tg_name" {
+  description = "Green target group name"
+  type        = string
+}
+
+variable "blue_template_name" {
+  description = "Blue launch template name"
+  type        = string
+}
+
+variable "green_template_name" {
+  description = "Green launch template name"
+  type        = string
+}
+
+variable "blue_asg_name" {
+  description = "Blue ASG name"
+  type        = string
+}
+
+variable "green_asg_name" {
+  description = "Green ASG name"
+  type        = string
+}
